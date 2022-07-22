@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 
+
 @dataclass
 class UnitClass:
 	name: str
@@ -9,37 +10,3 @@ class UnitClass:
 	stamina: float
 	armor: float
 	skill: ConcreteSkill
-
-
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-input()

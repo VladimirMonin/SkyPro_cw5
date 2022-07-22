@@ -4,6 +4,8 @@ import random
 import marshmallow_dataclass
 import marshmallow
 from utils import load_json
+from constants import EQUIPMENT_FILE
+import json
 
 
 @dataclass
@@ -34,33 +36,39 @@ class EquipmentData:
 
 
 class Equipment:
-	def __init__(self, data: dict):
-		self._data = data
-		self._equip = self._get_data()
+	def __init__(self):
+		self._equipment = self._get_data()
 
-	def _get_data(self):
+	@staticmethod
+	def _get_data():
+		with open(EQUIPMENT_FILE, 'r', encoding='utf-8') as file:
+			data = json.load(file)
 		try:
 			equipment_schema = marshmallow_dataclass.class_schema(EquipmentData)
-			return equipment_schema().load(self._data)
+			return equipment_schema().load(data)
 		except marshmallow.exceptions.ValidationError:
 			raise ValueError
 
 	def get_weapon(self, weapon: str) -> Weapon:
-		for item in self._equip.weapons:
+		for item in self._equipment.weapons:
 			if weapon == item.name:
 				return item
 
 	def get_armor(self, armor: str) -> Armor:
-		pass
+		for item in self._equipment.armors:
+			if armor == item.name:
+				return item
 
 	def get_weapon_names(self) -> List[str]:
-		return [i.name for i in self._equip.weapons]
+		return [i.name for i in self._equipment.weapons]
 
 	def get_armor_names(self) -> List[str]:
-		pass
+		return [i.name for i in self._equipment.armors]
 
 
-equip_data = load_json('data/equipment.json')
-eq_schemf = Equipment(equip_data)
+# equip_data = load_json('data/equipment.json')
+eq_schemf = Equipment()
 print(eq_schemf.get_weapon_names())
-# print(eq_schemf.get_weapon('ладошки'))
+print(eq_schemf.get_armor_names())
+print(eq_schemf.get_weapon('топорик'))
+print(eq_schemf.get_armor('панцирь'))
