@@ -17,3 +17,6 @@ class Skill(ABC):
 			return self._skill_effect()
 		else:
 			return f'{user.name} попытался использовать {self._name}, но у него не хватило выносливости'
+
+
+class ConcreteSkill(Skill):
