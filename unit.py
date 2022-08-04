@@ -23,6 +23,10 @@ class BaseUnit(ABC):
 		self._is_used_skill = False
 
 	@property
+	def name(self):
+		return self._name
+
+	@property
 	def unit_class(self):
 		return self._unit_class
 

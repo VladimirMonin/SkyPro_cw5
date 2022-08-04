@@ -18,8 +18,8 @@ class Skill(ABC):
 		if unit.stamina >= self._need_stamina:
 			self._skill_effect(target)
 			unit._is_used_skill = True
-			return f'{unit.name} использует {self.name} и наносит {self._damage} урона сопернику. '
-		return f'{unit.name} попытался использовать {self.name}, но у него не хватило выносливости. '
+			return f'{unit.name} использует {self._name} и наносит {self._damage} урона сопернику. '
+		return f'{unit.name} попытался использовать {self._name}, но у него не хватило выносливости. '
 
 
 class FuryPunch(Skill):
