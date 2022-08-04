@@ -26,8 +26,8 @@
   {
     "id": 1,
     "name": "футболка",
-    "defence": 0,
-    "stamina_per_turn": 0
+    "defence": 0.2,
+    "stamina_per_turn": 0.2
     },
     {
     "id": 2,

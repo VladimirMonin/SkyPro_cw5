@@ -3,7 +3,6 @@ from typing import List
 import random
 import marshmallow_dataclass
 import marshmallow
-from utils import load_json
 from constants import EQUIPMENT_FILE
 import json
 
@@ -16,7 +15,7 @@ class Weapon:
 	max_damage: float
 	stamina_per_hit: float
 
-	def get_damage(self) -> float:
+	def get_damage_by_weapon(self) -> float:
 		damage = random.uniform(self.min_damage, self.max_damage)
 		return round(damage, 1)
 
@@ -64,11 +63,3 @@ class Equipment:
 
 	def get_armor_names(self) -> List[str]:
 		return [i.name for i in self._equipment.armors]
-
-
-# equip_data = load_json('data/equipment.json')
-eq_schemf = Equipment()
-print(eq_schemf.get_weapon_names())
-print(eq_schemf.get_armor_names())
-print(eq_schemf.get_weapon('топорик'))
-print(eq_schemf.get_armor('панцирь'))
