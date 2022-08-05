@@ -16,7 +16,8 @@ class Weapon:
 	stamina_per_hit: float
 
 	def get_damage_by_weapon(self) -> float:
-		damage = random.uniform(self.min_damage, self.max_damage)
+		# damage = random.uniform(self.min_damage, self.max_damage)
+                damage = self.max_damage
 		return round(damage, 1)
 
 
