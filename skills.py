@@ -15,6 +15,7 @@ class Skill(ABC):
 		pass
 
 	def use(self, unit, target) -> str:
+		"""Использует умение"""
 		if unit.stamina >= self._need_stamina:
 			self._skill_effect(target)
 			unit._is_used_skill = True
@@ -28,6 +29,7 @@ class FuryPunch(Skill):
 	_need_stamina = 8
 
 	def _skill_effect(self, target):
+		"""Наносит урон сопернику"""
 		target.get_self_damage(self._damage)
 
 
@@ -37,4 +39,5 @@ class HardShot(Skill):
 	_need_stamina = 5
 
 	def _skill_effect(self, target):
+		"""Наносит урон сопернику"""
 		target.get_self_damage(self._damage)
