@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-import pymorphy2
+import pymorphy2  # type: ignore
 from classes import UnitClass
 from equipment import Weapon, Armor
 from constants import CHANCE_TO_EFFECT_SKILL
@@ -17,8 +17,8 @@ class BaseUnit(ABC):
 		self._hp = unit_class.max_health
 		self._stamina = unit_class.max_stamina
 		self._stamina_modify = unit_class.stamina
-		self._weapon = None
-		self._armor = None
+		self._weapon: Weapon
+		self._armor: Armor
 		self._is_used_skill = False
 
 	def equip_weapon(self, weapon: Weapon):
@@ -63,7 +63,7 @@ class BaseUnit(ABC):
 		return self._unit_class.skill.use(unit=self, target=target)
 
 	@abstractmethod
-	def hit(self, *args):
+	def hit(self, enemy: BaseUnit) -> Optional[str]:
 		"""Наносит удар (зависит от роли персонажа)"""
 		pass
 
@@ -120,7 +120,7 @@ class BaseUnit(ABC):
 
 
 class UserUnit(BaseUnit):
-	def hit(self, enemy: BaseUnit) -> str:
+	def hit(self, enemy: BaseUnit) -> Optional[str]:
 		"""Наносит удар"""
 		return self._strike(enemy)
 

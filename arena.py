@@ -27,7 +27,7 @@ class Arena(metaclass=BaseSingleton):
 		self.user = user
 		self.pc = pc
 
-	def next_turn(self) -> str:
+	def next_turn(self) -> Optional[str]:
 		"""Передает ход сопернику (ПК)"""
 		pc_hit = self.pc.hit(self.user)
 		if self.is_hp_null():
@@ -65,7 +65,7 @@ class Arena(metaclass=BaseSingleton):
 		self.game_is_running = False
 		return self.battle_result
 
-	def users_hit(self) -> str:
+	def users_hit(self) -> Optional[str]:
 		"""Выполняет удар игрока"""
 		return self.user.hit(self.pc)
 

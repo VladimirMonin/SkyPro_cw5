@@ -55,12 +55,14 @@ class Equipment:
 		for item in self._equipment.weapons:
 			if weapon == item.name:
 				return item
+		return None
 
 	def get_armor(self, armor: str) -> Optional[Armor]:
 		"""Находит броню по названию"""
 		for item in self._equipment.armors:
 			if armor == item.name:
 				return item
+		return None
 
 	def get_weapon_names(self) -> List[str]:
 		"""Возвращает список оружия"""
