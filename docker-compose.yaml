@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   api:
-    image: ivinokurov/cw_5:$GITHUB_REF_NAME-$GITHUB_RUN_ID
+    image: vmonin/cw_5:$GITHUB_REF_NAME-$GITHUB_RUN_ID
     ports:
       - 80:80
     restart: always
