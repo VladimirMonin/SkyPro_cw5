@@ -38,4 +38,3 @@ unit_classes = {
 	ThiefClass.name: ThiefClass,
 	WarriorClass.name: WarriorClass
 }
-

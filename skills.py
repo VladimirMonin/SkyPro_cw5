@@ -41,4 +41,3 @@ class HardShot(Skill):
 	def _skill_effect(self, target):
 		"""Наносит урон сопернику"""
 		target.get_self_damage(self._damage)
-

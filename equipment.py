@@ -71,4 +71,3 @@ class Equipment:
 	def get_armor_names(self) -> List[str]:
 		"""Возвращает список брони"""
 		return [i.name for i in self._equipment.armors]
-
