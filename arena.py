@@ -72,3 +72,4 @@ class Arena(metaclass=BaseSingleton):
 	def used_skill(self) -> Optional[str]:
 		"""Выполняет удар ПК"""
 		return self.user.get_skill_to_target(self.pc)
+
